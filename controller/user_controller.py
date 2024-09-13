@@ -36,11 +36,11 @@ def delete(id: int):
     session = get_db_session()
     try:
         user = session.query(User).filter_by(id=id).first()
+        print("1")
         if user:
             session.delete(user)
             session.commit()
             return True
-        return False
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
     finally:
@@ -70,11 +70,5 @@ def check_duplicate_id(id: int) -> bool:
         return user is not None
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
-    finally:
-        session.close()
-    session = get_db_session()
-    try:
-        user = session.query(User).filter_by(id=id).first()
-        return user is not None
     finally:
         session.close()

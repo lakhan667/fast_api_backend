@@ -5,7 +5,7 @@ from routers.user_router import router
 app = FastAPI()
 
 origins = [
-    "http://localhost:3000", 
+    "http://localhost:8001", 
     "http://localhost:8000", 
 ]
 
